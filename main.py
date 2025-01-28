@@ -7,7 +7,7 @@ import numpy as np
 st.title("Milk Quality Checker")
 
 # Load Model
-file_path = os.path.join("model", "knn_model.pkl")
+file_path = os.path.join("knn_model.pkl")
 
 # Check if file exists before loading
 if not os.path.exists(file_path):
