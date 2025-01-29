@@ -1,2 +1,3 @@
 # Milk-Quality-Checker
 To find the Milk Quality in Top accuracy and best
+Milk Quality Prediction (Classification)  About dataset This dataset is manually collected from observations. It helps us to build machine learning models to predict the quality of milk. This dataset consists of 7 independent variables ie pH, Temperature, Taste, Odor, Fat, Turbidity, and Color. Generally, the Grade or Quality of the milk depends on these parameters. These parameters play a vital role in the predictive analysis of the milk.  Usage The target variable is nothing but the Grade of the milk. It can be  Target  Low (Bad)  Medium (Moderate)  High (Good).
