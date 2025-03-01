@@ -1,13 +1,32 @@
+import base64
 import pickle
 import streamlit as st
 import os
 import numpy as np  
+def set_background(image_file):
+    with open(image_file, "rb") as img_file:
+        base64_image = base64.b64encode(img_file.read()).decode()
+    
+    background_style = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpeg;base64,{base64_image}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+    st.markdown(background_style, unsafe_allow_html=True)
+
+# Call the function with your background image
+set_background("static/bg.jpg")
 
 # Streamlit App Title
-st.title("Milk Quality Checker")
+st.markdown("<h1 style='text-align: center; color: white;'>🥛 Milk Quality Checker</h1>", unsafe_allow_html=True)
 
 # Load Model
-file_path = os.path.join("knn_model.pkl")
+file_path = os.path.join("model", "knn_model.pkl")
 
 # Check if file exists before loading
 if not os.path.exists(file_path):
@@ -17,13 +36,14 @@ else:
         model = pickle.load(f)
 
 # Input Fields
-ph = st.number_input("Insert a pH Value (3-9.5)", min_value=3.0, max_value=9.5)
-tm = st.number_input("Insert Temperature of Milk (34-90)", min_value=34, max_value=90)
-ta = st.number_input("Insert Taste of Milk (0/1)", min_value=0, max_value=1)
-om = st.number_input("Insert Odor of Milk (0/1)", min_value=0, max_value=1)
-fm = st.number_input("Insert Fat of Milk (0/1)", min_value=0, max_value=1)
-tu = st.number_input("Insert Turbidity of Milk (0/1)", min_value=0, max_value=1)
-cm = st.number_input("Insert Colour of Milk (240-255)", min_value=240, max_value=255)
+ph = st.number_input("Insert a pH Value ", min_value=3.0, max_value=9.5)
+tm = st.slider("Insert Temperature of Milk ", min_value=34, max_value=90)
+ta = st.number_input("Insert Taste of Milk ", min_value=0, max_value=1)
+om = st.number_input("Insert Odor of Milk ", min_value=0, max_value=1)
+fm = st.number_input("Insert Fat of Milk ", min_value=0, max_value=1)
+tu = st.number_input("Insert Turbidity of Milk ", min_value=0, max_value=1) 
+cm = st.number_input("Insert Colour Value of Milk ", min_value=240, max_value=255)
+
 
 # Prediction
 if st.button("Predict"):
