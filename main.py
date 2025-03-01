@@ -26,7 +26,7 @@ set_background("static/bg.jpg")
 st.markdown("<h1 style='text-align: center; color: white;'>🥛 Milk Quality Checker</h1>", unsafe_allow_html=True)
 
 # Load Model
-file_path = os.path.join("model", "knn_model.pkl")
+file_path = os.path.join("knn_model.pkl")
 
 # Check if file exists before loading
 if not os.path.exists(file_path):
