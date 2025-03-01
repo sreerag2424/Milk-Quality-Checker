@@ -20,7 +20,7 @@ def set_background(image_file):
     st.markdown(background_style, unsafe_allow_html=True)
 
 # Call the function with your background image
-set_background("static/bg.jpg")
+set_background("bg.jpg")
 
 # Streamlit App Title
 st.markdown("<h1 style='text-align: center; color: white;'>🥛 Milk Quality Checker</h1>", unsafe_allow_html=True)
